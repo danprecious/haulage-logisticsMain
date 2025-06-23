@@ -1,4 +1,4 @@
-import { fetchTrucks } from "@/lib/fetchData";
+
 import Analytics from "../customComponents/analytics";
 import TruckCards from "../customComponents/truckCards";
 import { FaUserCircle } from "react-icons/fa";
@@ -6,8 +6,7 @@ import TrendChart from "../customComponents/trendChart";
 
 const Dashboard = async () => {
 
-  const truckResponse = await fetchTrucks();
-
+console.log("rendered");
 
   return (
     <section className="">

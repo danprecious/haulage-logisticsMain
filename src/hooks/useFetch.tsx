@@ -1,29 +1,32 @@
-"use client";
-
-import { mockResponse } from "@/lib/mockData";
+import { apiUrl } from "@/lib/fetchData";
 import { Truck } from "@/types";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-const useFetch = () => {
+// Simple in-memory cache for fetched data
+const trucksCache: { data: Truck[] | null } = { data: null };
+
+const useFetch: () => { fetchedTrucks: Truck[] | null; fetchError: string } = () => {
   const [fetchedTrucks, setFetchedTrucks] = useState<Truck[] | null>(null);
   const [fetchError, setFetchError] = useState("");
 
   useEffect(() => {
+    // If trucks are already cached, use them
+    if (trucksCache.data) {
+      setFetchedTrucks(trucksCache.data);
+      return;
+    }
     const fetchTrucks = async () => {
       try {
-        const response = await axios.get(
-          "https://haulage-logistics.free.beeceptor.com/trucks"
-        );
+        const response = await axios.get(apiUrl);
         setFetchedTrucks(response.data);
+        trucksCache.data = response.data; // Cache the result
       } catch (error) {
-        // setFetchedTrucks(mockResponse);
         setFetchError("Error fetching trucks from mock api");
       }
     };
-
     fetchTrucks();
-  });
+  }, []);
 
   return { fetchedTrucks, fetchError };
 };

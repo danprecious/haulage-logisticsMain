@@ -6,6 +6,9 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { apiUrl } from "@/lib/fetchData";
+import useFetch from "@/hooks/useFetch";
+import Link from "next/link";
 
 const MapClient = dynamic(() => import("@/app/customComponents/MapClient"), {
   ssr: false,
@@ -15,34 +18,26 @@ const MapClient = dynamic(() => import("@/app/customComponents/MapClient"), {
 const UniqueTruck = () => {
   const { id } = useParams<{ id: string }>();
   const { selectedTruck } = useTruckState();
-  const [truck, setTruck] = useState<Truck | null>(null);
+  // const [truck, setTruck] = useState<Truck | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (!selectedTruck) {
-      axios
-        .get("https://haulage-logistics.free.beeceptor.com/trucks")
-        .then((response) => {
-          const data: Truck[] = response.data;
-          const singleTruck = data.find((t) => t.id === id);
-          setTruck(singleTruck || null);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error fetching truck data:", error);
+  const { fetchError, fetchedTrucks } = useFetch();
 
-          setLoading(false);
-          throw new Error("Error fetching truck data");
-        });
-    }
-  }, [id, selectedTruck]);
+  const truck = fetchedTrucks?.filter((truck) => truck.id === id)[0];
 
   if (!selectedTruck && !truck) {
     return (
-      <div className="flex items-center justify-center text-center h-[90vh]">
+      <div className="flex items-center flex-col justify-center text-center h-[90vh]">
         <h1 className="text-lg font-bold text-foreground/50">
-          Unable to load truck data. Please try again later.
+          Unable to load truck data. Retrying...
         </h1>
+        <p className="mt-8">No changes?</p>
+        <Link
+          href="/dashboard"
+          className="underline hover:text-foreground/80 text-foreground/50"
+        >
+          Go to dashboard
+        </Link>
       </div>
     );
   }
@@ -69,7 +64,7 @@ const UniqueTruck = () => {
     <div>
       <MapClient lat={latPosition} lng={lngPosition} city={city} />
 
-      <div className="bg-foreground/5 shadow-md rounded-lg p-4 mb-4 mt-10">
+      <div className="bg-foreground/5 shadow-md  p-6 mb-4 ">
         <h2 className="text-[1.2em] font-semibold">
           Truck ID: {selectedTruck?.id || truck?.id}
         </h2>

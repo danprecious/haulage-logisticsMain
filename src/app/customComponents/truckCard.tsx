@@ -14,7 +14,7 @@ const TruckCard: React.FC<{ truck: Truck }> = ({ truck }) => {
 
   const handleViewDetails = () => {
     saveTruck(truck);
-    router.push(`/dashboard/trucks/${truck.id}`);
+    router.push(`/trucks/${truck.id}`);
   };
 
   return (
@@ -44,7 +44,7 @@ const TruckCard: React.FC<{ truck: Truck }> = ({ truck }) => {
         <div className="">
           <button
             onClick={handleViewDetails}
-            className="underline text-sm text-foreground/80"
+            className="underline text-sm text-foreground/80 cursor-pointer hover:text-foreground/100"
           >
             View details
           </button>

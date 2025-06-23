@@ -77,7 +77,7 @@ const Analytics = () => {
               )}
               {data && (
                 <h3 className="text-[2rem] font-black mt-5 py-5">
-                  {(data * 60) / 5}
+                  {data}
                 </h3>
               )}
               <p className="text-foreground/80 font-semibold">{label}</p>

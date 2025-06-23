@@ -12,38 +12,33 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { apiUrl } from "@/lib/fetchData";
+import useFetch from "@/hooks/useFetch";
+import Link from "next/link";
 
 const TruckCards = () => {
-  const [trucks, setTrucks] = useState<TruckList | null>(null);
   const [filter, setFilter] = useState("");
 
-  useEffect(() => {
-    const fetchTrucks = async () => {
-      try {
-        const responses = await axios.get(
-          "https://haulage-logistics.free.beeceptor.com/trucks"
-        );
-        setTrucks(responses.data);
-      } catch (error) {
-        console.error("Error fetching truck data:", error);
-
-        throw new Error("Unable to load truck data");
-      }
-    };
-    fetchTrucks();
-  }, []);
+  const { fetchError, fetchedTrucks } = useFetch();
 
   const filteredTrucks =
     filter === "all" || !filter
-      ? trucks
-      : trucks?.filter((item) => item?.status === filter);
+      ? fetchedTrucks
+      : fetchedTrucks?.filter((item) => item?.status === filter);
 
-  if (!trucks) {
+  if (!fetchedTrucks) {
     return (
       <div className="flex items-center justify-center text-center h-[70vh]">
         <h1 className="text-lg font-bold text-foreground/50">
-          Unable to load truck data. Please try again later.
+          Unable to load truck data. Retrying....
         </h1>
+         <p className="mt-8">No changes?</p>
+                <Link
+                  href="/dashboard"
+                  className="underline hover:text-foreground/80 text-foreground/50"
+                >
+                  Go to dashboard
+                </Link>
       </div>
     );
   }
