@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <h1>Fleet Dashboard – Logistics Company (Technical Assessment)</h1>
+  <h1>Haulage & Logistics (Junior Frontend Technical Assessment)</h1>
 
   <p>
     This is a simple fleet management dashboard built with 
@@ -38,15 +38,15 @@ yarn dev</code></pre>
   <p>
     Data is fetched from:
     <br>
-    <strong><a href="https://yourname.beeceptor.com/trucks" target="_blank">https://yourname.beeceptor.com/trucks</a></strong>
+    <strong><a href="https://haulageassessment.free.beeceptor.com/trucks" target="_blank">https://haulageassessment.free.beeceptor.com/trucks</a></strong>
   </p>
 
   <h2>📸 Screenshots</h2>
   <h3>Dashboard with Truck Cards and Analytics</h3>
-  <img src="/images/dashboard.png" alt="Dashboard Screenshot" />
+  <img src="/screenshots/dashboard.png" alt="Dashboard screenshot"/>
 
   <h3>Truck Details with Map</h3>
-  <img src="/images/map.png" alt="Map Screenshot" />
+  <img src="/screenshots/map.png" alt="Map screenshot"/>
 
   <h2>Assumptions</h2>
   <ul>
@@ -81,7 +81,7 @@ yarn dev</code></pre>
     <li>Recharts (optional)</li>
   </ul>
 
-  <p><strong>Made with 💻 by [Your Name]</strong></p>
+  <p><strong>Made by Kayode Dan Precious</strong></p>
 
 </body>
 </html>
