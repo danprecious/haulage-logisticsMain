@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+</head>
+<body>
 
-## Getting Started
+  <h1>Fleet Dashboard – Logistics Company (Technical Assessment)</h1>
 
-First, run the development server:
+  <p>
+    This is a simple fleet management dashboard built with 
+    <span class="tag">Next.js (App Router)</span>, 
+    <span class="tag">React</span>, 
+    <span class="tag">Tailwind CSS</span>, and 
+    <span class="tag">Leaflet.js</span>, designed for a logistics company to track trucks, view their statuses, and visualize locations on a map.
+  </p>
 
-```bash
-npm run dev
+  <h2>Setup Instructions</h2>
+
+  <h3>1. Clone the Repository</h3>
+  <pre><code>git clone https://github.com/yourusername/fleet-dashboard.git
+cd fleet-dashboard</code></pre>
+
+  <h3>2. Install Dependencies</h3>
+  <pre><code>npm install
 # or
-yarn dev
+yarn install</code></pre>
+
+  <h3>3. Run the App Locally</h3>
+  <pre><code>npm run dev
 # or
-pnpm dev
-# or
-bun dev
-```
+yarn dev</code></pre>
+  <p>Visit: <a href="http://localhost:3000/dashboard" target="_blank">http://localhost:3000/dashboard</a></p>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  <h2>Mock API Endpoint (Beeceptor)</h2>
+  <p>
+    Data is fetched from:
+    <br>
+    <strong><a href="https://yourname.beeceptor.com/trucks" target="_blank">https://yourname.beeceptor.com/trucks</a></strong>
+  </p>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+  <h2>📸 Screenshots</h2>
+  <h3>Dashboard with Truck Cards and Analytics</h3>
+  <img src="/images/dashboard.png" alt="Dashboard Screenshot" />
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+  <h3>Truck Details with Map</h3>
+  <img src="/images/map.png" alt="Map Screenshot" />
 
-## Learn More
+  <h2>Assumptions</h2>
+  <ul>
+    <li>The backend/API service is mocked with Beeceptor.</li>
+    <li>Only 5 trucks are used for demonstration.</li>
+    <li>All locations are static from the API.</li>
+  </ul>
 
-To learn more about Next.js, take a look at the following resources:
+  <h2>Known Limitations</h2>
+  <ul>
+    <li>No backend persistence or auth.</li>
+    <li>Real-time updates are simulated with <code>setInterval</code>.</li>
+    <li>Average idle time is mocked.</li>
+    <li>Some responsive edge cases may need extra tweaks.</li>
+  </ul>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  <h2>Possible Improvements</h2>
+  <ul>
+    <li>Integrate WebSocket or polling for live tracking.</li>
+    <li>Pagination and sorting for trucks list.</li>
+    <li>Auth and role-based access.</li>
+    <li>Better animation/loading feedback.</li>
+  </ul>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+  <h2>Tech Stack</h2>
+  <ul>
+    <li>Next.js (App Router)</li>
+    <li>React</li>
+    <li>Tailwind CSS</li>
+    <li>Leaflet.js</li>
+    <li>Beeceptor (Mock API)</li>
+    <li>Recharts (optional)</li>
+  </ul>
 
-## Deploy on Vercel
+  <p><strong>Made with 💻 by [Your Name]</strong></p>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+</body>
+</html>
