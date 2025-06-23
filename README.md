@@ -43,10 +43,10 @@ yarn dev</code></pre>
 
   <h2>📸 Screenshots</h2>
   <h3>Dashboard with Truck Cards and Analytics</h3>
-  ![Map Screenshot](screenshots/dashboard.png)
+  <img src="/screenshots/dashboard.png" alt="Dashboard screenshot"/>
 
   <h3>Truck Details with Map</h3>
-  ![Map Screenshot](screenshots/map.png)
+  <img src="/screenshots/map.png" alt="Map screenshot"/>
 
   <h2>Assumptions</h2>
   <ul>
